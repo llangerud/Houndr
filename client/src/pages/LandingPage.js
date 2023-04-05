@@ -1,7 +1,8 @@
 import React from 'react';
- 
+import { Link } from 'react-router-dom';
 
 export default function LandingPage() {
+
     return (
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
@@ -9,9 +10,12 @@ export default function LandingPage() {
           <div>
             <h1 className="text-5xl font-bold">Houndr</h1>
             <p className="py-6">Personalized playdates for you and your pup</p>
-            <button className="btn btn-primary">Get Started</button>
+            <Link to='/signup'><button className="btn btn-primary">Get Started</button></Link>
+           
           </div>
         </div>
       </div>
+
+      
      );
     }
