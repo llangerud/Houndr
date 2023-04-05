@@ -3,7 +3,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink} from '@apo
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-
+import SignupForm from './components/SignupForm'
 import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar';
@@ -44,6 +44,10 @@ function App() {
               <Route 
                 path="/" 
                 element={<LandingPage/>} 
+              />
+              <Route 
+                path="/signup" 
+                element={<SignupForm/>} 
               />
 
        
