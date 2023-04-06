@@ -25,8 +25,8 @@ const userSchema = new Schema(
       required: true,
     },
 
-    // set savedDogs to be an array of data that adheres to the dogSchema
-    savedDogs: [dogSchema],
+    // this is based on the dog schema and holds the user's dogs
+    myDogs: [dogSchema],
   },
 
 );

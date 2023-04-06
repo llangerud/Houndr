@@ -26,16 +26,17 @@ export const ADD_USER = gql`
 
 
 
-export const SAVE_DOG = gql`
-mutation saveDog($dogId: ID!) {
-  saveDog(dog: $dog) {
+export const ADD_DOG = gql`
+mutation addDog($dog: DogInput!) {
+  addDog(dog: $dog) {
     _id
     name
     breed
+    about
     image
-    savedDogs {
-      _id
-    }
+    age
+    fixed
   }
 }`;
+
 
