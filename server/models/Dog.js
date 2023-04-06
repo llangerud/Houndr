@@ -10,9 +10,23 @@ const dogSchema = new Schema({
     type: String,
     required: true,
   },
+  about: {
+    type: String,
+    required: true,
+  },
   image: {
     type: String,
+    required: true,
   },
+  age: {
+    type: Number,
+    required: true,
+      },
+  
+  fixed: {
+    type: Boolean,
+    required: true,
+  }
 });
 
 module.exports = dogSchema;

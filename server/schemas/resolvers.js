@@ -26,6 +26,7 @@ const resolvers = {
 
       return { token, user };
     },
+  
     login: async (parent, { email, password }) => {
       console.log('login called')
       const user = await User.findOne({ email });
@@ -47,7 +48,23 @@ const resolvers = {
     }
 
 
-      }
+      },
+      
+      addDog: async (parent, { dog }, context) => {
+        console.log('addDog called');
+        console.log(context.user._id);
+        if (context.user) {
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: context.user._id  },
+            { $addToSet: { myDogs: dog } },
+            { new: true, runValidators: true }
+          );
+          return updatedUser;
+        }
+        throw new AuthenticationError('You need to be logged in!');
+      },
+
+
     }
   
 
