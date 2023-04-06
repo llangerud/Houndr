@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import SignupModal from '../components/SignupModal'
 
 export default function LandingPage() {
 
@@ -10,7 +10,8 @@ export default function LandingPage() {
           <div>
             <h1 className="text-5xl font-bold">Houndr</h1>
             <p className="py-6">Personalized playdates for you and your pup</p>
-            <Link to='/signup'><button className="btn btn-primary">Get Started</button></Link>
+            <SignupModal></SignupModal>
+            {/* <Link to='/signup'><button className="btn btn-primary">Get Started</button></Link> */}
            
           </div>
         </div>

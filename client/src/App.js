@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignupForm from './components/SignupForm'
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
+import UserProfile from './pages/UserProfile';
+import MyProfile from './pages/MyProfile';
 import Navbar from './components/Navbar';
 
 //main GraphQL API endpoint
@@ -51,7 +53,9 @@ function App() {
               />
 
        
-          <Route  path='/home' element={<Dashboard/>} />
+          <Route  path='/myprofile' element={<MyProfile/>} />
+          <Route  path='/userprofile' element={<UserProfile/>} />
+          <Route  path='/dashboard' element={<Dashboard/>} />
           <Route render={() => <h1>Wrong page!</h1>} />
     
       
