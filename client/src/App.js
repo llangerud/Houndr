@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import SignupForm from './components/SignupForm'
 import LandingPage from './pages/LandingPage';
-import HomePage from './pages/HomePage';
+import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
 
 //main GraphQL API endpoint
@@ -51,7 +51,7 @@ function App() {
               />
 
        
-          <Route  path='/home' element={<HomePage/>} />
+          <Route  path='/home' element={<Dashboard/>} />
           <Route render={() => <h1>Wrong page!</h1>} />
     
       
