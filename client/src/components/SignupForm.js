@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import {useMutation} from '@apollo/client';
 import {ADD_USER} from '../utils/mutations'
 import Auth from '../utils/auth';
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = () => {
   // set initial form state
@@ -12,6 +13,7 @@ const SignupForm = () => {
   // // set state for alert
   // const [showAlert, setShowAlert] = useState(false);
 
+  const navigate = useNavigate();
   const [addUser] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
@@ -34,7 +36,7 @@ const SignupForm = () => {
       console.log(data)
       const {token} = data.addUser;
       Auth.login(token);
-    
+      navigate("/dashboard");
     } catch (err) {
       console.error(err);
       // setShowAlert(true);
@@ -46,6 +48,12 @@ const SignupForm = () => {
       password: '',
       zip: ''
     });
+
+    //takes you to your dashboard
+    
+
+
+
   };
 
 

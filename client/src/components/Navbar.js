@@ -1,12 +1,14 @@
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import React from 'react';
+
 
 // import SignUpForm from './SignupForm';
-// import LoginForm from './LoginForm';
+import LoginModal from './LoginModal';
 
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 
 
+
+//this needs logic to display the logged in vs not logged in navbar, right now, is the not logged in version only
 const AppNavbar = () => {
 
 
@@ -31,7 +33,15 @@ return (<div className="navbar bg-base-100">
         <li><a href = "/" >FAQ</a></li>
       </ul>
     </div>
-    <a href = "/" className="btn btn-ghost normal-case text-xl">Houndr</a>
+    {/* if logged in include link to dashboard */}
+    {Auth.loggedIn() ? (
+   
+   <a href = "/dashboard" className="btn btn-ghost normal-case text-xl">My Dashboard</a>
+    ) : (
+    // otherwise show the logo
+  <a href = "/" className="btn btn-ghost normal-case text-xl">Houndr</a>
+    )}
+   
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -49,8 +59,14 @@ return (<div className="navbar bg-base-100">
       <li><a href = "/" >FAQ</a></li>
     </ul>
   </div>
-  <div className="navbar-end">
-    <a href = "/" className="btn">Login</a>
+  <div className="navbar-end"> 
+  {Auth.loggedIn() ? (
+   
+   <btn onClick={Auth.logout}>Logout</btn>
+    ) : (
+    // this is the login button (the button itself is in the modal)
+ <LoginModal></LoginModal>
+    )}
   </div>
 </div>
 );

@@ -45,10 +45,10 @@ const resolvers = {
       const token = signToken(user);
      
       return { token, user };
-    }
+    },
 
 
-      },
+     
       
       addDog: async (parent, { dog }, context) => {
         console.log('addDog called');
@@ -64,7 +64,7 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in!');
       },
 
-
+ }
     }
   
 

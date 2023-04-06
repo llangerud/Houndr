@@ -5,7 +5,7 @@ const typeDefs = gql`
     _id: ID!
     username: String
     email: String
-    savedDogs: [Dog]!
+    myDogs: [Dog]!
   }
   type Dog {
     _id: ID!
@@ -13,7 +13,7 @@ const typeDefs = gql`
     breed: String
     about: String
     image: String
-    age: Number
+    age: Int
     fixed: Boolean
   }
 
@@ -33,7 +33,7 @@ const typeDefs = gql`
     breed: String!
     about: String!
     image: String!
-    age: Number!
+    age: Int!
     fixed: Boolean!
   }
 
@@ -43,7 +43,7 @@ const typeDefs = gql`
     
     login(email: String!, password: String!): Auth
     
-    saveDog(dog: DogInput!): User
+    addDog(dog: DogInput!): User
        
     }
 `;
