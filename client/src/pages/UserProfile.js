@@ -16,11 +16,11 @@ export default function UserProfile() {
       </div>
       <div>
         <p>Meet {otherDogs.name}! </p>
-        <img>{otherDogs.image}</img>
+        <img alt = "dog">{otherDogs.image}</img>
         <p>
           {otherDogs.name} is a {otherDogs.breed}. {otherDogs.description}
         </p>
-        //need to add query for location
+        {/* //need to add query for location */}
         <button>Click here to setup a time to play!</button>
       </div>
     </div>

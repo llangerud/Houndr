@@ -1,12 +1,33 @@
 import React from 'react';
+import { useState, useEffect } from "react";
 
 const Dashboard = () => {
 
+const [breedOptions, setBreedOptions] = useState([]);
 
-    
-//  {/* input form with option to select breed prepopulated from fetch request to API  */}
-//     <button></button>
-// {/* //search bar and input form to select parameters */}
+useEffect(() => {
+    fetch(`https://dog.ceo/api/breeds/list/all`)
+    .then(data => data.json())
+    .then((dogs) => {
+    // using Object.keys to get the dog names out of the message object returned from fetch request
+    const keys = Object.keys(dogs.message);
+    setBreedOptions(keys)
+})
+//second argument here to avoid rerunning fetch request if not necessary
+}, []);
+
+const handleDogSelect = (e) => {
+    console.log(e.target.value)
+}
+
+
+function showSearchResults(e) {
+//this will run the query and show the results
+    e.preventDefault();
+    console.log('formsubmitted')
+}
+
+
 
 // {/* //display below that runs a search for zip codes nearby and displays those photos */}
 //button that says "Add my dog!"
@@ -17,40 +38,35 @@ const Dashboard = () => {
 
  <div>
     
-    <div>My dashboard</div>
-    
+        
+    <form onSubmit = {showSearchResults}>
     <div className="form-control w-full max-w-xs">
-  <label className="label">
+    <label className="label">
     <span className="label-text">I'm looking for a</span>
-    <span className="label-text-alt">Alt label</span>
+    <span className="label-text-alt">dog breed select</span>
   </label>
-  <select className="select select-bordered">
+  <select className="select select-bordered" id="breedMenu" onChange={handleDogSelect}>
     <option disabled selected>Breed</option>
-    <option>From the breeds avail in the fetch</option>
-    <option>Pommerianian</option>
+{/* Generate option for each dog */}
+{breedOptions.map((breed) => (
+          <option key={breed} value={breed}>
+            {breed}
+            </option>
+            ))}
     </select>
-  <label className="label">
-    <span className="label-text-alt">Alt label</span>
-    <span className="label-text-alt">Alt label</span>
-  </label>
-</div>
+  </div>
 
-<div className="form-control w-full max-w-xs">
+{/* <div className="form-control w-full max-w-xs">
   <label className="label">
     <span className="label-text">In</span>
-    <span className="label-text-alt">Alt label</span>
-  </label>
+     </label>
   <select className="select select-bordered">
-    <option disabled selected>Zip Code</option>
-    <option>From the breeds avail in the fetch</option>
-    <option>Pommerianian</option>
+    <option disabled selected>Some other option</option>
+    <option>tbd</option>
+    <option>tbd</option>
     </select>
-  <label className="label">
-    <span className="label-text-alt">Alt label</span>
-    <span className="label-text-alt">Alt label</span>
-  </label>
-</div>
-
+</div> */}
+</form>
 
  
 
