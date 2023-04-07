@@ -35,8 +35,8 @@ const typeDefs = gql`
     breed: String!
     about: String!
     image: String!
-    age: Int!
-    fixed: Boolean!
+    age: String!
+    fixed: String!
   }
 
    

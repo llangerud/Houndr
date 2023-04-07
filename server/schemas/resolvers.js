@@ -55,11 +55,11 @@ const resolvers = {
 
      
       
-      addDog: async (parent, { dog }, context) => {
+      addDog: async (parent, {dog}, context) => {
         console.log('addDog called');
-        console.log(context.user._id);
+        console.log(dog);
         if (context.user) {
-          const updatedUser = await User.findOneAndUpdate(
+            const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id  },
             { $addToSet: { myDogs: dog } },
             { new: true, runValidators: true }

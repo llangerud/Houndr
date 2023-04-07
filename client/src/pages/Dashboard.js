@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
+
 const Dashboard = () => {
 
 const [breedOptions, setBreedOptions] = useState([]);
@@ -38,7 +39,7 @@ function showSearchResults(e) {
 
  <div>
     
-        
+   
     <form onSubmit = {showSearchResults}>
     <div className="form-control w-full max-w-xs">
     <label className="label">
@@ -48,8 +49,8 @@ function showSearchResults(e) {
   <select className="select select-bordered" id="breedMenu" onChange={handleDogSelect}>
     <option disabled selected>Breed</option>
 {/* Generate option for each dog */}
-{breedOptions.map((breed) => (
-          <option key={breed} value={breed}>
+{breedOptions.map((breed, index) => (
+          <option key={index} value={breed}>
             {breed}
             </option>
             ))}
