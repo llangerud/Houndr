@@ -26,7 +26,9 @@ const typeDefs = gql`
     User: [User]!
     user(userId: ID!): User
     me: User
+    searchDog: Dog
   }
+
 
   input DogInput {
     name: String!
@@ -37,6 +39,7 @@ const typeDefs = gql`
     fixed: Boolean!
   }
 
+   
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!, zip: String!): Auth
