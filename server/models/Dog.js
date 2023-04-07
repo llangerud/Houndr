@@ -5,7 +5,6 @@ const dogSchema = new Schema({
     type: String,
     required: true,
   },
-  
   breed: {
     type: String,
     required: true,
@@ -22,7 +21,6 @@ const dogSchema = new Schema({
     type: Number,
     required: true,
       },
-  
   fixed: {
     type: Boolean,
     required: true,

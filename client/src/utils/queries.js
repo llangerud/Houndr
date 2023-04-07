@@ -15,5 +15,27 @@ export const GET_ME = gql`
         
       }
     }
+
   }
 `;
+
+export const ALL_DOGS = gql`
+  query allDogs {
+    profiles {
+      _id
+      name
+      breed
+      image
+      description
+    }
+  }`;
+
+  }`;
+
+export const GET_BREED = gql`
+  query searchDog {
+    dog {
+      breed
+    }
+  }`
+
