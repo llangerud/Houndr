@@ -14,8 +14,6 @@ const ViewProfile = () => {
                 <li>Name: {userData.myDogs.name}</li>
                 <li>Breed: {userData.myDogs.breed}</li>
                 <li>Doggy Description: {userData.myDogs.about}</li>
-                <li>{userData.myDogs.image}</li>
-                <li>Age: {userData.myDogs.age}</li>
             </ol>
             </div>
         );
