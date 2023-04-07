@@ -15,6 +15,7 @@ export const GET_ME = gql`
         
       }
     }
+
   }
 `;
 
@@ -28,3 +29,13 @@ export const ALL_DOGS = gql`
       description
     }
   }`;
+
+  }`;
+
+export const GET_BREED = gql`
+  query searchDog {
+    dog {
+      breed
+    }
+  }`
+
