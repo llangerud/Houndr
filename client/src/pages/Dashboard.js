@@ -29,25 +29,17 @@ function showSearchResults(e) {
 }
 
 
-
-// {/* //display below that runs a search for zip codes nearby and displays those photos */}
-//button that says "Add my dog!"
-
-
     return (
 
-
- <div>
-    
-   
-    <form onSubmit = {showSearchResults}>
+//two columns, second column drops below first on mobile, second column will display search results (if no search has taken place, display results that match zip only)
+    <div class="grid grid-cols-1 sm:grid-cols-2 ">
+    <form onSubmit = {showSearchResults} class="m-8">
     <div className="form-control w-full max-w-xs">
     <label className="label">
     <span className="label-text">I'm looking for a</span>
-    <span className="label-text-alt">dog breed select</span>
+    <span className="label-text-alt"></span>
   </label>
   <select className="select select-bordered" id="breedMenu" onChange={handleDogSelect}>
-    <option disabled selected>Breed</option>
 {/* Generate option for each dog */}
 {breedOptions.map((breed, index) => (
           <option key={index} value={breed}>
@@ -57,16 +49,17 @@ function showSearchResults(e) {
     </select>
   </div>
 
-{/* <div className="form-control w-full max-w-xs">
+<div className="form-control w-full max-w-xs">
   <label className="label">
-    <span className="label-text">In</span>
+    <span className="label-text"></span>
      </label>
   <select className="select select-bordered">
-    <option disabled selected>Some other option</option>
-    <option>tbd</option>
-    <option>tbd</option>
+    <option>puppy</option>
+    <option>adult</option>
+    <option>senior</option>
     </select>
-</div> */}
+</div>
+<button className="btn btn-accent mt-4">find my new friends</button>
 </form>
 
  

@@ -32,7 +32,7 @@ return (<div className="navbar bg-base-100">
     {/* if logged in include link to dashboard */}
     {Auth.loggedIn() ? (
    
-   <a href = "/dashboard" className="btn btn-ghost normal-case text-xl">My Dashboard</a>
+   <a href = "/dashboard" className="btn btn-ghost normal-case text-xl">Dashboard</a>
     ) : (
     // otherwise show the logo
   <a href = "/" className="btn btn-ghost normal-case text-xl">Houndr</a>

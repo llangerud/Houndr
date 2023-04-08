@@ -1,7 +1,8 @@
-import React from 'react';
+
 import SignupModal from '../components/SignupModal';
 import AddDogModal from '../components/AddDogModal'
 import Auth from '../utils/auth';
+
 
 export default function LandingPage() {
 
@@ -17,8 +18,7 @@ export default function LandingPage() {
             <h1 className="text-5xl font-bold">Let's get some dates!</h1>
             <p className="py-6"></p>
             <AddDogModal></AddDogModal>
-            {/* <Link to='/signup'><button className="btn btn-primary">Get Started</button></Link> */}
-           
+            <button className="btn btn-primary mt-4">Find Friends</button>
           </div>
         </div>
       </div>

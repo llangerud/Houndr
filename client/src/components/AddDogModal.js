@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DogForm from './DogForm'
+import AddDogForm from './DogForm'
 
 const AddDogModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,7 @@ const AddDogModal = () => {
           
           <div className="modal-action">
          {/*this modal is using the dogform */}
-          <DogForm></DogForm>
+          <AddDogForm></AddDogForm>
             <label htmlFor="add-dog-modal" className="btn btn-primary" onClick={toggleModal}>X</label>
           </div>
         </div>
