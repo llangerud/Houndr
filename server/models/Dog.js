@@ -15,15 +15,15 @@ const dogSchema = new Schema({
   },
   image: {
     type: String,
-    required: true,
+    required: false,
   },
   age: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
       },
   fixed: {
-    type: Boolean,
-    required: true,
+    type: String,
+    required: false,
   }
 });
 

@@ -1,14 +1,10 @@
 import React from 'react';
-
-
-// import SignUpForm from './SignupForm';
 import LoginModal from './LoginModal';
-
 import Auth from '../utils/auth';
 
 
 
-//this needs logic to display the logged in vs not logged in navbar, right now, is the not logged in version only
+//checks if you are logged in or not to display login/logout and dashboard
 const AppNavbar = () => {
 
 
@@ -36,7 +32,7 @@ return (<div className="navbar bg-base-100">
     {/* if logged in include link to dashboard */}
     {Auth.loggedIn() ? (
    
-   <a href = "/dashboard" className="btn btn-ghost normal-case text-xl">My Dashboard</a>
+   <a href = "/dashboard" className="btn btn-ghost normal-case text-xl">Dashboard</a>
     ) : (
     // otherwise show the logo
   <a href = "/" className="btn btn-ghost normal-case text-xl">Houndr</a>
@@ -62,7 +58,7 @@ return (<div className="navbar bg-base-100">
   <div className="navbar-end"> 
   {Auth.loggedIn() ? (
    
-   <btn onClick={Auth.logout}>Logout</btn>
+   <button onClick={Auth.logout}>Logout</button>
     ) : (
     // this is the login button (the button itself is in the modal)
  <LoginModal></LoginModal>
