@@ -36,10 +36,11 @@ const typeDefs = gql`
     name: String!
     breed: String!
     about: String!
-    image: String!
+    image: String
     age: String!
     fixed: String!
   }
+
 
   
 
@@ -50,7 +51,7 @@ const typeDefs = gql`
     
     login(email: String!, password: String!): Auth
     
-    addDog(dog: DogInput!): User
+    addDog(name: String!, breed:String!, about:String!, image:String, age:String!, fixed: String!): User
        
     }
 `;

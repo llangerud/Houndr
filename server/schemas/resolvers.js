@@ -68,9 +68,11 @@ const resolvers = {
 
      
       
-      addDog: async (parent, {dog}, context) => {
+      addDog: async (parent, {name, breed, about, image, age, fixed}, context) => {
         console.log('addDog called');
-        console.log(dog);
+        console.log(image)
+       const dog = {name, breed, about, image, age, fixed}
+       console.log(dog); 
         if (context.user) {
             const updatedUser = await User.findOneAndUpdate(
             { _id: context.user._id  },

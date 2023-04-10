@@ -27,12 +27,14 @@ export const ADD_USER = gql`
 
 
 export const ADD_DOG = gql`
-mutation addDog($dog: DogInput!) {
-  addDog(dog: $dog) {
+mutation addDog($name: String!, $breed: String!, $about: String!, $image: String, $age:String!, $fixed: String!) {
+  addDog(name: $name, breed: $breed, about: $about, image: $image, age: $age, fixed: $fixed) {
    username 
    myDogs {
     name
     breed
+    image
+    age
    }
   }
 }`;
