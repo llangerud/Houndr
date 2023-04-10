@@ -13,6 +13,8 @@ const [dogFormData, setDogFormData] = useState({
     age: 'puppy',
   });
 
+  const [showContent, setShowContent] = useState(false);
+
 
 console.log(dogFormData.breed)
 const selectedBreed =dogFormData.breed
@@ -52,7 +54,14 @@ const showSearchResults = async (e) => {
   
     // console.log({...dogFormData})
 
+    setShowContent(true);
+
 }
+
+
+
+// const imageURL = data.users.myDogs.image ? data.users.myDogs.image : './images/happy-pup-1.png';
+
 
 if (loading) {
   return <div>loading...</div>
@@ -90,6 +99,21 @@ if (loading) {
 </div>
 <button className="btn btn-accent mt-4">find my new friends</button>
 </form>
+
+{/* {showContent && (
+        <div>
+        <div className="card lg:card-side bg-base-100 shadow-xl">
+  <figure><img src={imageURL} alt="Album"/></figure>
+  <div className="card-body">
+    <h2 className="card-title">New album is released!</h2>
+    <p>Click the button to listen on Spotiwhy app.</p>
+    <div className="card-actions justify-end">
+      <button className="btn btn-primary">Listen</button>
+    </div>
+  </div>
+</div>
+        </div>
+      )} */}
 
  
 
