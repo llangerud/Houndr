@@ -29,13 +29,11 @@ export const ADD_USER = gql`
 export const ADD_DOG = gql`
 mutation addDog($dog: DogInput!) {
   addDog(dog: $dog) {
-    _id
+   username 
+   myDogs {
     name
     breed
-    about
-    image
-    age
-    fixed
+   }
   }
 }`;
 
