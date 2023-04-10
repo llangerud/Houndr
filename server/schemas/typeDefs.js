@@ -5,6 +5,7 @@ const typeDefs = gql`
     _id: ID!
     username: String
     email: String
+    zip: String
     myDogs: [Dog]!
   }
   type Dog {
@@ -13,8 +14,8 @@ const typeDefs = gql`
     breed: String
     about: String
     image: String
-    age: Int
-    fixed: Boolean
+    age: String
+    fixed: String
   }
 
   type Auth {
@@ -27,6 +28,7 @@ const typeDefs = gql`
     user(userId: ID!): User
     me: User
     searchDog: Dog
+    users(dogBreed: String): [User]
   }
 
 
@@ -38,6 +40,8 @@ const typeDefs = gql`
     age: String!
     fixed: String!
   }
+
+  
 
    
 

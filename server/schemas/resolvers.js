@@ -10,7 +10,7 @@ const resolvers = {
     
     if (context.user) {
       return User.findOne({ _id: context.user._id })
-    //   .populate('dogs');
+      // .populate('myDogs');
     }
     throw new AuthenticationError('You need to be logged in!');
   },
@@ -20,7 +20,20 @@ const resolvers = {
       return User.findOne({_id: context.user._id })
     }
     throw new AuthenticationError('You need to be logged in!');
-  }
+  },
+  //search all the users and get the ones who match breed//front end query FIND_DOGS
+  //
+  users: async (parent, {dogBreed}) =>  {
+    console.log('find Dogs')
+    console.log(dogBreed)
+    const users = await User.find({ 'myDogs.breed': dogBreed });
+    console.log(users)
+
+    return users || [];
+
+  },
+
+
 },
 
   Mutation: {

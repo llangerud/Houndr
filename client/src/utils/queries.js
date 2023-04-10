@@ -7,7 +7,7 @@ export const GET_ME = gql`
       username
       email
       zip
-      savedDogs {
+      myDogs {
         name
         breed 
         image
@@ -18,6 +18,27 @@ export const GET_ME = gql`
 
   }
 `;
+
+
+export const FIND_DOGS = gql`
+query findDogs ($breed: String!) {
+  users(dogBreed: $breed) {
+    _id
+    username
+    email
+    zip
+    myDogs {
+      name
+      breed
+      age
+      fixed
+      image
+      
+    }
+  }
+}`;
+
+
 
 export const ALL_DOGS = gql`
   query allDogs {

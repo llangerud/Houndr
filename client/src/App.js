@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 import UserProfile from './pages/UserProfile';
 import MyProfile from './pages/MyProfile';
 import Navbar from './components/Navbar';
+import QueryTest from './components/Test'
 
 //main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -56,6 +57,7 @@ function App() {
           <Route  path='/myprofile' element={<MyProfile/>} />
           <Route  path='/userprofile' element={<UserProfile/>} />
           <Route  path='/dashboard' element={<Dashboard/>} />
+          <Route path='/test' element={<QueryTest/>} /> 
           <Route render={() => <h1>Wrong page!</h1>} />
     
       

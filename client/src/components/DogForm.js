@@ -21,6 +21,7 @@ const AddDogForm = () => { // set initial form state
         fetch(`https://dog.ceo/api/breeds/list/all`).then(data => data.json()).then((dogs) => { // using Object.keys to get the dog names out of the message object returned from fetch request
             const keys = Object.keys(dogs.message);
             setBreedOptions(keys)
+            
         })
         // second argument here to avoid rerunning fetch request if not necessary
     }, []);
@@ -34,25 +35,33 @@ const AddDogForm = () => { // set initial form state
             ...dogFormData,
             [name]: value
         });
+
+//  fetch(`https://dog.ceo/api/breed/${dogFormData.breed}/images/random`)
+//         .then(data => data.json())
+//         .then((data) => { setDogFormData ({// ...dogFormData, image:data.message})});
+
     };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(dogFormData.breed)
+
+       
        
         // async function getDogImage () {
         //   const response = await fetch(`https://dog.ceo/api/breed/${dogFormData.breed}/images/random`);
         //   const data = await response.json();
+        //   console.log(data.message)
         //   setDogFormData({
         //     ...dogFormData,
         //     image: data.message
         //     });
         // }
               
-        // console.log(dogData);
-        // console.log (dogData.message)
-        // const imageString = dogData.message;
-          // getDogImage();
+        // // console.log(dogData);
+        // // console.log (dogData.message)
+        // // const imageString = dogData.message;
+        //   getDogImage();
      
 
         console.log(dogFormData);
@@ -159,7 +168,7 @@ const AddDogForm = () => { // set initial form state
                      </div>   
                     
                      <div className="form-control w-full max-w-xs">
-                        <label className="text-base-100">age (also ok to guess)</label>
+                        <label className="text-base-100">age</label>
                             <select type='text' name='age'
                                 onChange={handleInputChange}
                                 value={dogFormData.age}
