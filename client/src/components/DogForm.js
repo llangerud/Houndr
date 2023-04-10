@@ -4,8 +4,12 @@ import {ADD_DOG} from '../utils/mutations'
 import Auth from '../utils/auth';
 // import { redirect } from 'react-router-dom';
 
+
+
 const AddDogForm = () => { // set initial form state
-    const [dogFormData, setDogFormData] = useState({
+    
+  const[dogImage, setImage] = useState({URL: ""});
+  const [dogFormData, setDogFormData] = useState({
         name: '',
         breed: 'affenpinscher',
         about: '',
@@ -15,6 +19,7 @@ const AddDogForm = () => { // set initial form state
     });
 
     const [breedOptions, setBreedOptions] = useState([]);
+    
    
 
     useEffect(() => {
@@ -29,42 +34,55 @@ const AddDogForm = () => { // set initial form state
     const [addDog] = useMutation(ADD_DOG);
 
     const handleInputChange = (event) => {
-        console.log(event.target.name, event.target.value);
+        // console.log(event.target.name, event.target.value);
         const {name, value} = event.target;
-        setDogFormData({
+
+
+        
+            setDogFormData({
             ...dogFormData,
             [name]: value
         });
 
-//  fetch(`https://dog.ceo/api/breed/${dogFormData.breed}/images/random`)
-//         .then(data => data.json())
-//         .then((data) => { setDogFormData ({// ...dogFormData, image:data.message})});
+      
+       
+  //  const imageReceived = await fetch(`https://dog.ceo/api/breed/${dogFormData.breed}/images/random`)
+  //       .then(data => data.json())
+  //       .then((data) => { setImage ({URL:data.message})});
 
+    
     };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(dogFormData.breed)
+        // console.log(dogFormData.breed)
 
-       
-       
-        // async function getDogImage () {
-        //   const response = await fetch(`https://dog.ceo/api/breed/${dogFormData.breed}/images/random`);
-        //   const data = await response.json();
-        //   console.log(data.message)
-        //   setDogFormData({
-        //     ...dogFormData,
-        //     image: data.message
-        //     });
+       console.log('formsubmit')
+          // async function getDogImage (breed) {
+
+          const breed = dogFormData.breed;
+          const response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`);
+          const imageData = await response.json();
+          console.log(imageData.message)
+          if (imageData) {
+          setImage({
+            URL: imageData.message
+            });
+          }
+        //   return response
         // }
-              
-        // // console.log(dogData);
-        // // console.log (dogData.message)
-        // // const imageString = dogData.message;
-        //   getDogImage();
-     
 
-        console.log(dogFormData);
+        
+        // getDogImage(breed)   
+           
+        // console.log(dogData);
+        // console.log (dogData.message)
+        // const imageString = dogData.message;
+    
+        console.log('thelineaftergetDogImage')
+
+        // console.log(dogFormData);
+        console.log(dogImage)
 
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -72,18 +90,21 @@ const AddDogForm = () => { // set initial form state
             return false;
         }
 
-        console.log(dogFormData);
+       
     
         // const imageString = dogFormData.image
-       
+       console.log(dogImage.URL)
+       console.log(dogFormData);
 
             const data = await addDog({
 
                 variables: {
-                    dog: {
-                        ...dogFormData
-                      
-                    }
+                 name: dogFormData.name,
+                 breed: dogFormData.breed,
+                 about: dogFormData.about,
+                 image: dogImage.URL,
+                 age: dogFormData.age,
+                 fixed: dogFormData.fixed
                 },
                 context: {
                     headers: {
@@ -110,6 +131,8 @@ const AddDogForm = () => { // set initial form state
                 console.log(data)
 
     }
+
+ 
     
     return (
 
@@ -151,6 +174,8 @@ const AddDogForm = () => { // set initial form state
                                         value={breed}>
                                         {breed} </option>
                                 ))
+                                
+                               
                             } </select> 
                             
                         </div>
@@ -189,7 +214,8 @@ const AddDogForm = () => { // set initial form state
                                   <option value="yes">Yes</option>
                                   <option value="no">No</option>
                         </select>     
-                    </div>   
+                    </div>
+                
                     
                     <button className="w-full px-4 py-2 mt-4 tracking-wide text-white transition-colors duration-200 transform bg-info rounded-md hover:bg-base-100 focus:outline-none focus:bg-base-100"
                         disabled={

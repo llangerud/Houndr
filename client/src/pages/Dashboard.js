@@ -6,7 +6,7 @@ import {useQuery} from '@apollo/client';
 
 const Dashboard = () => {
 
-  const [breedOptions, setBreedOptions] = useState([]);
+const [breedOptions, setBreedOptions] = useState([]);
 
 const [dogFormData, setDogFormData] = useState({
     breed: 'affenpinscher',
