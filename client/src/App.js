@@ -8,6 +8,7 @@ import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import UserProfile from './pages/UserProfile';
 import MyProfile from './pages/MyProfile';
+import UpdateMyProfile from './pages/UpdateMyProfile';
 import Navbar from './components/Navbar';
 import QueryTest from './components/Test'
 

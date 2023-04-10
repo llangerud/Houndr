@@ -65,7 +65,17 @@ const resolvers = {
       return { token, user };
     },
 
-
+    updateProfile: async (parent, { username, email, password, zip }, context) => {
+      if (context.user) {
+        const updateProfile = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {_id: username, _id: email, _id: password, _id: zip },
+          { new: true, runValidators: true }
+        )
+      return updateProfile;
+    }
+    throw new AuthenticationError('You need to be logged in!');
+    },
      
       
       addDog: async (parent, {dog}, context) => {

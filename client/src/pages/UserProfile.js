@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { useEffect, useSt
- } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { ALL_DOGS } from "../utils/queries";
 import UserDetails from '../components/UserDetails';
 
-const userProfile = () => {
+const UserProfile = () => {
   const [profiles, setProfiles] = useState(null)
 
   useEffect(() => {
@@ -56,4 +54,4 @@ const userProfile = () => {
   );
 }
 
-export default userProfile;
+export default UserProfile;

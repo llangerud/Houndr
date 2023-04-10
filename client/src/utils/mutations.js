@@ -24,6 +24,17 @@ export const ADD_USER = gql`
   }
 `;
 
+export const UPDATE_USER = gql`
+  mutation updateUser($username: String!, $email: String!, $password: String!, $zip: String!) {
+    updateUser(username: $username, email: $email, password: $password, zip: $zip) {
+      token
+      user {
+        _id
+        username
+      }
+    }
+  }
+`;
 
 
 export const ADD_DOG = gql`
