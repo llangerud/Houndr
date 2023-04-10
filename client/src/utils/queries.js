@@ -52,7 +52,6 @@ export const ALL_DOGS = gql`
   }`;
 
 
-
 export const GET_BREED = gql`
   query searchDog {
     dog {
