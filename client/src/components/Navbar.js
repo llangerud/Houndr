@@ -4,8 +4,11 @@ import Auth from '../utils/auth';
 
 
 
+
 //checks if you are logged in or not to display login/logout and dashboard
 const AppNavbar = () => {
+
+  
 
 
 return (<div className="navbar bg-base-100">
@@ -30,6 +33,9 @@ return (<div className="navbar bg-base-100">
       </ul>
     </div>
     {/* if logged in include link to dashboard */}
+
+
+
     {Auth.loggedIn() ? (
    
    <a href = "/dashboard" className="btn btn-ghost normal-case text-xl">Dashboard</a>
@@ -41,7 +47,7 @@ return (<div className="navbar bg-base-100">
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><a href = "/" >About Us</a></li>
+      <li><a href = "/myprofile" >My Profile</a></li>
       <li tabIndex={0}>
         <a href = "/" >
           Explore
