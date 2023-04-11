@@ -34,7 +34,7 @@ return (<div className="navbar bg-base-100">
     </div>
     {/* if logged in include link to dashboard */}
 
-  
+
 
     {Auth.loggedIn() ? (
    
@@ -47,7 +47,7 @@ return (<div className="navbar bg-base-100">
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><a href = "/" >About Us</a></li>
+      <li><a href = "/myprofile" >My Profile</a></li>
       <li tabIndex={0}>
         <a href = "/" >
           Explore
