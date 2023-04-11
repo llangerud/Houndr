@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -13,8 +13,18 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!, $zip: String!) {
-    addUser(username: $username, email: $email, password: $password, zip: $zip) {
+  mutation addUser(
+    $username: String!
+    $email: String!
+    $password: String!
+    $zip: String!
+  ) {
+    addUser(
+      username: $username
+      email: $email
+      password: $password
+      zip: $zip
+    ) {
       token
       user {
         _id
@@ -25,9 +35,8 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_USER = gql`
-  mutation updateUser($username: String!, $email: String!, $password: String!, $zip: String!) {
-    updateUser(username: $username, email: $email, password: $password, zip: $zip) {
-      token
+  mutation updateUser($username: String!, $email: String!, $zip: String!) {
+    updateUser(username: $username, email: $email, zip: $zip) {
       user {
         _id
         username
@@ -36,18 +45,45 @@ export const UPDATE_USER = gql`
   }
 `;
 
-
 export const ADD_DOG = gql`
-mutation addDog($name: String!, $breed: String!, $about: String!, $image: String, $age:String!, $fixed: String!) {
-  addDog(name: $name, breed: $breed, about: $about, image: $image, age: $age, fixed: $fixed) {
-   username 
-   myDogs {
-    name
-    breed
-    image
-    age
-   }
+  mutation addDog(
+    $name: String!
+    $breed: String!
+    $about: String!
+    $image: String
+    $age: String!
+    $fixed: String!
+  ) {
+    addDog(
+      name: $name
+      breed: $breed
+      about: $about
+      image: $image
+      age: $age
+      fixed: $fixed
+    ) {
+      username
+      myDogs {
+        name
+        breed
+        image
+        age
+      }
+    }
   }
-}`;
+`;
 
-
+export const DELETE_DOG = gql`
+  mutation deleteDog($dogId: ID!) {
+    deleteDog(dogId: $ID) {
+      user {
+        _id
+        username
+        myDogs {
+          name
+          breed
+        }
+      }
+    }
+  }
+`;
