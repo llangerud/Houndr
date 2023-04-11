@@ -7,6 +7,7 @@ import {useQuery} from '@apollo/client';
 const Dashboard = () => {
 
 const [breedOptions, setBreedOptions] = useState([]);
+// const [id, setId] = useState('')
 
 const [dogFormData, setDogFormData] = useState({
     breed: 'affenpinscher',
@@ -58,6 +59,14 @@ const showSearchResults = async (e) => {
 
 }
 
+// onclick = (event) => {
+//   event.preventDefault();
+//   setId(event.target.value);
+// }
+
+// onClose = () => {
+//   setId(null);
+// }
 
 
 // const imageURL = data.users.myDogs.image ? data.users.myDogs.image : './images/happy-pup-1.png';
@@ -100,20 +109,21 @@ if (loading) {
 <button className="btn btn-accent mt-4">find my new friends</button>
 </form>
 
-{/* {showContent && (
+{showContent && (
         <div>
         <div className="card lg:card-side bg-base-100 shadow-xl">
-  <figure><img src={imageURL} alt="Album"/></figure>
-  <div className="card-body">
-    <h2 className="card-title">New album is released!</h2>
-    <p>Click the button to listen on Spotiwhy app.</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Listen</button>
-    </div>
-  </div>
-</div>
+        <figure><img src='https://images.dog.ceo/breeds/affenpinscher/n02110627_4597.jpg' alt="Album"/></figure>
+        <div className="card-body">
+        <h2 className="card-title">New album is released!</h2>
+        <p>Click the button to listen on Spotiwhy app.</p>
+        <div className="card-actions justify-end">
+        <button className="btn btn-primary">Listen</button>
         </div>
-      )} */}
+        </div>
+</div>
+</div>
+)}
+{/* {id && <CarriesComponent id={id}></CarriesComponent>} */}
 
  
 
