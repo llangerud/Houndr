@@ -85,7 +85,8 @@ const users =  data.users
 
     return (
 
-//two columns, second column drops below first on mobile, second column will display search results (if no search has taken place, display results that match zip only)
+//two columns, second column drops below first on mobile, second column will display search results
+
     <div className="grid grid-cols-1 sm:grid-cols-2 ">
     
     <form onSubmit = {showSearchResults} className="m-8">
@@ -123,25 +124,28 @@ const users =  data.users
           
           {users.map((user, index)  => (
              
-        <div className="card lg:card-side bg-base-100 shadow-xl" key={index}>
+        <div className="card lg:card-side bg-base-200 shadow-xl m-8" key={index}>
         <figure><img src={user.myDogs.image ? user.myDogs.image : './images/happy-pup-1.png'} alt="dog"/></figure>
         <div className="card-body">
         <h2 className="card-title">{user.myDogs.name}</h2>
         <p>{user.username}</p>
         <p>{user.zip}</p>
+        
         <div className="card-actions justify-end">
       
         {/* <button onClick= {handleClicked} value= {user._id}className="btn btn-primary">Listen</button>
         id={id} */}
         
         <SearchDogsModal 
-        key={user._userId}
-        name={user.name}image={user.myDogs.image}about={user.myDogs.about}age={user.myDogs.age}fixed={user.myDogs.fixed}zip={user.zip}email={user.email}username={user.username} 
+        key={users[index]}
+        name={users[index]}
+        
+        // image={user.myDogs.image}about={user.myDogs.about}age={user.myDogs.age}fixed={user.myDogs.fixed}zip={user.zip}email={user.email}username={user.username} 
         
         ></SearchDogsModal>
         </div>
         </div>
-</div>
+</div >
 ))}
 </div>
 

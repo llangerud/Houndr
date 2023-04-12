@@ -1,7 +1,12 @@
 import React from "react";
 
   const UserProfile = (props) => {
-    // console.log(props);
+    console.log(props);
+    console.log(props.name)
+    const {name} = props;
+    console.log(name)
+    console.log(name.myDogs)
+
     return (
 
     <div className="card w-96 bg-base-100 shadow-xl">
@@ -9,7 +14,7 @@ import React from "react";
         <img src="./images/dogone.jpg" alt="Dog" className="rounded-xl" />
     </figure>
     <div className="card-body items-center text-center">
-        <h2 className="card-title">Name of Dog</h2>
+        <h2 className="card-title">{name.myDogs.name}</h2>
         <ul>{props.user}</ul>
         <ul>About: </ul>
         <ul>Age: </ul>

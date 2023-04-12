@@ -3,12 +3,16 @@ import UserProfile from '../pages/UserProfile';
 
 const SearchDogsModal = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { name, image, about, age, fixed, zip, email, username } = props
-  // console.log(name, image)
+  const {name} = props
+  
+  // console.log(name)
+ 
   const toggleModal = () => {
     setIsOpen(!isOpen);
     
   };
+
+  
 
   // if (!name || !image || !about || !age || !fixed || !zip || !email || !username) {
   //   return <div>Loading...</div>;
