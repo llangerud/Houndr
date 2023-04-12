@@ -1,6 +1,7 @@
 import React from "react";
 
-  const UserProfile = ({ profile }) => {
+  const UserProfile = (props) => {
+    // console.log(props);
     return (
 
     <div className="card w-96 bg-base-100 shadow-xl">
@@ -9,7 +10,7 @@ import React from "react";
     </figure>
     <div className="card-body items-center text-center">
         <h2 className="card-title">Name of Dog</h2>
-        <ul>Breed: </ul>
+        <ul>{props.user}</ul>
         <ul>About: </ul>
         <ul>Age: </ul>
         <ul>Fixed: </ul>

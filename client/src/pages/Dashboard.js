@@ -2,31 +2,30 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import {FIND_DOGS} from '../utils/queries'
 import {useQuery} from '@apollo/client';
+import SearchDogsModal from '../components/SearchDogsModal'
 
 
-const Dashboard = () => {
+const Dashboard =  () => {
 
 const [breedOptions, setBreedOptions] = useState([]);
-// const [id, setId] = useState('')
+
 
 const [dogFormData, setDogFormData] = useState({
     breed: 'affenpinscher',
     age: 'puppy',
   });
 
+  const [selected, setSelected] = useState('beagle')
+
   const [showContent, setShowContent] = useState(false);
 
+  // const [id, setId] = useState([])
+// const selectedBreed = dogFormData.breed
 
-console.log(dogFormData.breed)
-const selectedBreed =dogFormData.breed
 
-const {loading, data} = useQuery(FIND_DOGS, {
-variables: {breed:selectedBreed }
+const {loading, data, refetch} = useQuery(FIND_DOGS, {
+variables: {breed: selected }
 });
-
-// console.log(error)
-
-console.log(data)
 
 useEffect(() => {
     fetch(`https://dog.ceo/api/breeds/list/all`)
@@ -40,53 +39,55 @@ useEffect(() => {
 }, []);
 
 const handleDogSelect = (e) => {
+   
+    const {id, value} = e.target;
+    // console.log(e.target.id)
     // console.log(e.target.value)
-    const {name, value} = e.target;
     setDogFormData({
         ...dogFormData,
-        [name]: value
+        [id]: value
     });
 }
 
 
-const showSearchResults = async (e) => {
-//this will run the query and show the results
-    e.preventDefault();
-  
-    // console.log({...dogFormData})
 
+
+const showSearchResults = async (e) => {
+//this will show the results with the updated user selections
+    e.preventDefault();
+     
+    if (showContent) {
+      
+      setShowContent(false)
+    }
+
+    setSelected(dogFormData.breed)
+    // console.log(dogFormData)
+    await refetch()
     setShowContent(true);
 
 }
-
-// onclick = (event) => {
-//   event.preventDefault();
-//   setId(event.target.value);
-// }
-
-// onClose = () => {
-//   setId(null);
-// }
-
-
-// const imageURL = data.users.myDogs.image ? data.users.myDogs.image : './images/happy-pup-1.png';
 
 
 if (loading) {
   return <div>loading...</div>
 }
 
+
+const users =  data.users
+
     return (
 
 //two columns, second column drops below first on mobile, second column will display search results (if no search has taken place, display results that match zip only)
     <div className="grid grid-cols-1 sm:grid-cols-2 ">
+    
     <form onSubmit = {showSearchResults} className="m-8">
     <div className="form-control w-full max-w-xs">
     <label className="label">
     <span className="label-text">I'm looking for a</span>
     <span className="label-text-alt"></span>
   </label>
-  <select className="select select-bordered" id="breedMenu" onChange={handleDogSelect}>
+  <select className="select select-bordered" id="breed" onChange={handleDogSelect}>
 {/* Generate option for each dog */}
 {breedOptions.map((breed, index) => (
           <option key={index} value={breed}>
@@ -100,7 +101,7 @@ if (loading) {
   <label className="label">
     <span className="label-text"></span>
      </label>
-  <select className="select select-bordered">
+  <select className="select select-bordered" id="age"onChange={handleDogSelect}>
     <option value="puppy">puppy</option>
     <option value="adult">adult</option>
     <option value="senior">senior</option>
@@ -109,29 +110,42 @@ if (loading) {
 <button className="btn btn-accent mt-4">find my new friends</button>
 </form>
 
-{showContent && (
-        <div>
-        <div className="card lg:card-side bg-base-100 shadow-xl">
-        <figure><img src='https://images.dog.ceo/breeds/affenpinscher/n02110627_4597.jpg' alt="Album"/></figure>
-        <div className="card-body">
-        <h2 className="card-title">New album is released!</h2>
-        <p>Click the button to listen on Spotiwhy app.</p>
-        <div className="card-actions justify-end">
-        <button className="btn btn-primary">Listen</button>
-        </div>
-        </div>
-</div>
-</div>
-)}
-{/* {id && <CarriesComponent id={id}></CarriesComponent>} */}
-
- 
-
-</div>
-
-
+{showContent &&  (
   
-        );
+        <div>  
+          
+          {users.map((user, index)  => (
+             
+        <div className="card lg:card-side bg-base-100 shadow-xl" key={index}>
+        <figure><img src={user.myDogs.image ? user.myDogs.image : './images/happy-pup-1.png'} alt="dog"/></figure>
+        <div className="card-body">
+        <h2 className="card-title">{user.myDogs.name}</h2>
+        <p>{user.username}</p>
+        <p>{user.zip}</p>
+        <div className="card-actions justify-end">
+      
+        {/* <button onClick= {handleClicked} value= {user._id}className="btn btn-primary">Listen</button>
+        id={id} */}
+        
+        <SearchDogsModal 
+        key={user._userId}
+        name={"user.myDogs.name"}image={user.myDogs.image}about={user.myDogs.about}age={user.myDogs.age}fixed={user.myDogs.fixed}zip={user.zip}email={user.email}username={user.username} 
+        
+        ></SearchDogsModal>
+        </div>
+        </div>
+</div>
+))}
+</div>
+
+
+)}
+  </div>
+
+      );
     }
 
     export default Dashboard;
+    
+    
+    

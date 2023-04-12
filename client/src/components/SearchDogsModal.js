@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import UserDetails from './UserDetails';
+import UserProfile from '../pages/UserProfile';
 
-const SearchDogsModal = () => {
+const SearchDogsModal = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { name, image, about, age, fixed, zip, email, username } = props
+  console.log(name, image)
   const toggleModal = () => {
     setIsOpen(!isOpen);
+    
   };
+
+  // if (!name || !image || !about || !age || !fixed || !zip || !email || !username) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div>
       {/* The button to open modal */}
-      <label htmlFor="seach-dogs-modal" className="btn btn-primary" onClick={toggleModal}>search for a dog in your area</label>
+      <label htmlFor="seach-dogs-modal" className="btn btn-primary" onClick={toggleModal}>Meet up!</label>
 
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="search-dogs-modal" className="modal-toggle" checked={isOpen} readOnly />
@@ -20,7 +26,11 @@ const SearchDogsModal = () => {
           
           <div className="modal-action">
          {/*this modal is using the UserDetials */}
-          <UserDetails></UserDetails>
+          <UserProfile 
+          {...props}
+          // name={props.myDogs.name}image={props.myDogs.image}about={props.myDogs.about}age={props.myDogs.age}fixed={props.myDogs.fixed}zip={props.zip}email={props.email}username={props.username} 
+          
+          ></UserProfile>
             <label htmlFor="search-dogs-modal" className="btn btn-primary" onClick={toggleModal}>X</label>
           </div>
         </div>
