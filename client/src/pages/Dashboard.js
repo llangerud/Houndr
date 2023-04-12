@@ -125,9 +125,9 @@ const users =  data.users
           {users.map((user, index)  => (
              
         <div className="card lg:card-side bg-base-200 shadow-xl m-8" key={index}>
-        <figure><img src={user.myDogs.image ? user.myDogs.image : './images/happy-pup-1.png'} alt="dog"/></figure>
+        <figure><img src={user.myDogs[index].image ? user.myDogs.image : './images/happy-pup-1.png'} alt="dog"/></figure>
         <div className="card-body">
-        <h2 className="card-title">{user.myDogs.name}</h2>
+        <h2 className="card-title">{user.myDogs[index].name}</h2>
         <p>{user.username}</p>
         <p>{user.zip}</p>
         

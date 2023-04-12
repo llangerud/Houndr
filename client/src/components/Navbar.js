@@ -46,9 +46,11 @@ return (<div className="navbar bg-base-100">
     )}
    
   </div>
+  
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><a href = "/myprofile" >My Profile</a></li>
+      {Auth.loggedIn() ? (<li><a href = "/myprofile" >My Profile</a></li>) : (
+        <li><a href = "/myprofile" >FAQ</a></li>)}
       {/* <li tabIndex={0}>
         <a href = "/" >
           Explore
@@ -65,7 +67,7 @@ return (<div className="navbar bg-base-100">
   <div className="navbar-end"> 
   {Auth.loggedIn() ? (
    
-   <button onClick={Auth.logout}>Logout</button>
+   <button className="btn btn-bg-100" onClick={Auth.logout}>Logout</button>
     ) : (
     // this is the login button (the button itself is in the modal)
  <LoginModal></LoginModal>
