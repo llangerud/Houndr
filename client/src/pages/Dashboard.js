@@ -15,7 +15,7 @@ const [dogFormData, setDogFormData] = useState({
     age: 'puppy',
   });
 
-  const [selected, setSelected] = useState('beagle')
+  const [selected, setSelected] = useState('')
 
   const [showContent, setShowContent] = useState(false);
 
@@ -47,6 +47,9 @@ const handleDogSelect = (e) => {
         ...dogFormData,
         [id]: value
     });
+    console.log(dogFormData.breed)
+ 
+
 }
 
 
@@ -55,16 +58,20 @@ const handleDogSelect = (e) => {
 const showSearchResults = async (e) => {
 //this will show the results with the updated user selections
     e.preventDefault();
-     
+     console.log(dogFormData.breed)
     if (showContent) {
-      
+      setSelected(dogFormData.breed)
       setShowContent(false)
     }
-
-    setSelected(dogFormData.breed)
+   
     // console.log(dogFormData)
     await refetch()
     setShowContent(true);
+    setDogFormData({
+      breed: 'affenpinscher',
+      age: 'puppy',
+      });
+      setSelected(dogFormData.breed)
 
 }
 
@@ -129,7 +136,7 @@ const users =  data.users
         
         <SearchDogsModal 
         key={user._userId}
-        name={"user.myDogs.name"}image={user.myDogs.image}about={user.myDogs.about}age={user.myDogs.age}fixed={user.myDogs.fixed}zip={user.zip}email={user.email}username={user.username} 
+        name={user.name}image={user.myDogs.image}about={user.myDogs.about}age={user.myDogs.age}fixed={user.myDogs.fixed}zip={user.zip}email={user.email}username={user.username} 
         
         ></SearchDogsModal>
         </div>
