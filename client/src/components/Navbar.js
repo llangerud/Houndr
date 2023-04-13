@@ -37,30 +37,31 @@ return (<div className="navbar bg-base-100">
 
 
 
-    {Auth.loggedIn() ? (
+    {/* {Auth.loggedIn() ? (
    
    <a href = "/dashboard" className="btn btn-ghost normal-case text-xl">Dashboard</a>
-    ) : (
-    // otherwise show the logo
+    ) : ( */}
+  
   <a href = "/" className="btn btn-ghost normal-case text-xl">Houndr</a>
-    )}
+    {/* )} */}
    
   </div>
   
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      {Auth.loggedIn() ? (<li><a href = "/myprofile" >My Profile</a></li>) : (
-        <li><a href = "/myprofile" >FAQ</a></li>)}
-      {/* <li tabIndex={0}>
+      {/* {Auth.loggedIn() ? (<li><a href = "/myprofile" >My Profile</a></li>) : (
+        <li><a href = "/myprofile" >FAQ</a></li>)} */}
+      <li tabIndex={0}>
         <a href = "/" >
-          Explore
+          Go to
           <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
         </a>
         <ul className="p-2">
-          <li><a href = "/" >Pet Parents Near You</a></li>
-          <li><a href = "/" >Top Dogs</a></li>
+          <li><a href = "/" >Home</a></li>
+          <li><a href = "/myprofile" >My Profile</a></li>
+          <li><a href = "/dashboard" >Dashboard</a></li>
         </ul>
-      </li> */}
+      </li>
       {/* <li><a href = "/" >FAQ</a></li> */}
     </ul>
   </div>
