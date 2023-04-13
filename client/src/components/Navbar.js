@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginModal from './LoginModal';
 import Auth from '../utils/auth';
-
+import { Link } from "react-router-dom";
 
 
 
@@ -57,9 +57,9 @@ return (<div className="navbar bg-base-100">
           <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
         </a>
         <ul className="p-2">
-          <li><a href = "/" >Home</a></li>
-          <li><a href = "/myprofile" >My Profile</a></li>
-          <li><a href = "/dashboard" >Dashboard</a></li>
+          <li> <Link to="/">Home</Link></li>
+          <li><Link to="/myprofile">My Profile</Link></li>
+          <li><Link to="/dashboard">Dashboard</Link></li>
         </ul>
       </li>
       {/* <li><a href = "/" >FAQ</a></li> */}
