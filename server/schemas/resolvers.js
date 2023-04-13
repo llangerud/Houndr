@@ -92,12 +92,14 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    deleteDog: async (parent, { dog }, context) => {
-      return User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $pull: { myDogs: dog } },
-        { new: true }
-      );
+    deleteDog: async (parent, { index }, context) => {
+      const user = await User.findById(context.user._id);
+      if (!user) {
+        throw new AuthenticationError('User not found');
+      }
+      user.myDogs.splice(index, 1)
+      await user.save();
+      return user;
     },
   },
 };

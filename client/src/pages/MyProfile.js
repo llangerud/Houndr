@@ -1,20 +1,14 @@
-import React, {useState, useRef }from   'react';
+import React, {useRef }from   'react';
 import  { useQuery, useMutation} from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { DELETE_DOG, UPDATE_PROFILE } from '../utils/mutations'
-import Auth from '../utils/auth';
+
 
 const ViewMyProfile = () => {
     const { loading, data } = useQuery(GET_ME);
-    const [deleteDog, { error }] = useMutation(DELETE_DOG)
+    const [deleteDog] = useMutation(DELETE_DOG)
     const userData = data?.me || {};
-    const [updateProfile, { updateError }] = useMutation(UPDATE_PROFILE);
-    
-//     const [profileData, setProfileData] = useState({
-//     username: userData.username,
-//     email: userData.email,
-//     zip: userData.zip,
-//   });
+    const [updateProfile] = useMutation(UPDATE_PROFILE);
 
 
   const usernameRef = useRef();
@@ -24,9 +18,7 @@ const ViewMyProfile = () => {
   const handleSubmit = async (event) => {
     
     event.preventDefault();
-
-    console.log(typeof usernameRef.current.value, emailRef.current.value, zipRef.current.value);
-
+    
     try {
    const data = await updateProfile({
           variables: { username:usernameRef.current.value, 
@@ -41,27 +33,26 @@ const ViewMyProfile = () => {
 
   }  
 
- 
+    const handleDogDelete = async (index) => {
 
-
-
-
-    // const handleDeleteDog = async (dogId) => {
+       let indexNumber = parseInt(index)
+       console.log(typeof indexNumber)
       
-    //     try {
-    //       const {data} = await deleteDog({
-    //         variables: { dogId },
-    //       });
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // };
+        try {
+          const {data} = await deleteDog({
+            variables: { index },
+          });
+
+          console.log(data);
+        } catch (err) {
+            console.error(err);
+        }
+        
+    };
 
     if (loading) {
         return <h2>LOADING...</h2>
     }
-
-    // console.log(data)
 
     
     return (
@@ -92,6 +83,7 @@ const ViewMyProfile = () => {
                                 <li>Breed: {dog.breed}</li>
                                 <li>Age: {dog.age}</li>
                                 <li>Fixed: {dog.fixed}</li>
+                                <button onClick={() => handleDogDelete(index)}>remove</button>
                             </ol>
                         </div>
             </div>

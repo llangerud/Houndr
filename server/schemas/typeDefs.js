@@ -55,7 +55,7 @@ const typeDefs = gql`
 
     addDog(name: String!, breed:String!, about:String!, image:String, age:String!, fixed: String!): User
 
-    deleteDog(dogId: ID!): User
+    deleteDog(index: Int!): User
        
     }
 `;

@@ -80,16 +80,13 @@ export const ADD_DOG = gql`
 `;
 
 export const DELETE_DOG = gql`
-  mutation deleteDog($dogId: ID!) {
-    deleteDog(dogId: $ID) {
-      user {
-        _id
-        username
+  mutation deleteDog($index: Int!) {
+    deleteDog(index: $index) 
+    {
+      username 
         myDogs {
           name
-          breed
         }
       }
     }
-  }
 `;
