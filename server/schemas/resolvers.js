@@ -13,12 +13,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    searchDog: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id });
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
+
     //search all the users and get the ones who match breed//front end query FIND_DOGS
     //
     users: async (parent, { dogBreed }) => {
@@ -62,12 +57,12 @@ const resolvers = {
 
     updateProfile: async (parent, { username, email, zip }, context) => {
       if (context.user) {
-        const updateProfile = await User.findOneAndUpdate(
+        const updatedProfile = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { username: username, email: email, zip: zip },
-          { new: true, runValidators: true }
+          { username, email, zip },
+          { new: true }
         );
-        return updateProfile;
+        return updatedProfile;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -92,12 +87,14 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    deleteDog: async (parent, { dog }, context) => {
-      return User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $pull: { myDogs: dog } },
-        { new: true }
-      );
+    deleteDog: async (parent, { index }, context) => {
+      const user = await User.findById(context.user._id);
+      if (!user) {
+        throw new AuthenticationError('User not found');
+      }
+      user.myDogs.splice(index, 1)
+      await user.save();
+      return user;
     },
   },
 };

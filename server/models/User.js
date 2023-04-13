@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const dogSchema = require('./Dog');
-const dogBreed = require('./Breed');
+
 
 const userSchema = new Schema(
   {
@@ -28,7 +28,7 @@ const userSchema = new Schema(
 
     // this is based on the dog schema and holds the user's dogs
     myDogs: [dogSchema],
-    dog: [dogBreed]
+   
   },
 
 );

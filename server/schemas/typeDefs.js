@@ -51,13 +51,11 @@ const typeDefs = gql`
     
     login(email: String!, password: String!): Auth
     
-
-
     updateProfile(username: String!, email: String!, zip: String!): User
 
     addDog(name: String!, breed:String!, about:String!, image:String, age:String!, fixed: String!): User
 
-    deleteDog(dogId: ID!): User
+    deleteDog(index: Int!): User
        
     }
 `;

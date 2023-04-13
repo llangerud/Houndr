@@ -34,15 +34,21 @@ export const ADD_USER = gql`
   }
 `;
 
-export const UPDATE_USER = gql`
-  mutation updateUser($username: String!, $email: String!, $zip: String!) {
-    updateUser(username: $username, email: $email, zip: $zip) {
-      user {
+export const UPDATE_PROFILE = gql`
+  mutation updateProfile($username: String!, $email: String!, $zip: String!) {
+    updateProfile(
+      username: $username
+      email: $email 
+      zip: $zip
+      ) {
         _id
         username
+        email
+        zip
+        
       }
     }
-  }
+ 
 `;
 
 export const ADD_DOG = gql`
@@ -66,24 +72,23 @@ export const ADD_DOG = gql`
       myDogs {
         name
         breed
+        about
         image
         age
+        fixed
       }
     }
   }
 `;
 
 export const DELETE_DOG = gql`
-  mutation deleteDog($dogId: ID!) {
-    deleteDog(dogId: $ID) {
-      user {
-        _id
-        username
+  mutation deleteDog($index: Int!) {
+    deleteDog(index: $index) 
+    {
+      username 
         myDogs {
           name
-          breed
         }
       }
     }
-  }
 `;

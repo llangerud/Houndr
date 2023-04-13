@@ -5,26 +5,27 @@ import React from "react";
     console.log(props.name)
     const {name} = props;
     console.log(name)
-    console.log(name.myDogs)
+    console.log(name.myDogs[0].image)
 
     return (
-
-    <div className="card w-96 bg-base-100 shadow-xl">
+      
+      <div className="card lg:card-side bg-base-100 shadow-xl">
     <figure className="px-10 pt-10">
-        <img src="./images/dogone.jpg" alt="Dog" className="rounded-xl" />
+    <img src={name.myDogs[0].image ? name.myDogs[0].image : './images/happy-pup-1.png'} alt="dog"/>
     </figure>
     <div className="card-body items-center text-center">
-        <h2 className="card-title">{name.myDogs.name}</h2>
+        <h2 className="card-title">{name.myDogs[0].name}</h2>
         <ul>{props.user}</ul>
-        <ul>About: </ul>
-        <ul>Age: </ul>
-        <ul>Fixed: </ul>
-        <ul>Zip: </ul>
+        <ul>People say: {name.myDogs[0].about}</ul>
+        <ul>Age: {name.myDogs[0].age}</ul>
+        <ul>Fixed:{name.myDogs[0].fixed} </ul>
+        <ul>Zip: {name.zip} </ul>
         <div className="card-actions">
-        <button className="btn btn-primary">Click here to setup a playdate!</button>
+        <button className="btn btn-primary" >  <a href={`mailto:${name.email}`}>contact my person</a></button>
         </div>
     </div>
     </div>
+   
   )};
 
 export default UserProfile;
