@@ -72,8 +72,10 @@ export const ADD_DOG = gql`
       myDogs {
         name
         breed
+        about
         image
         age
+        fixed
       }
     }
   }

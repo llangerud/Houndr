@@ -9,8 +9,11 @@ export const GET_ME = gql`
       zip
       myDogs {
         name
-        breed 
+        breed
+        about
         image
+        age
+        fixed
         
         
       }
@@ -30,6 +33,7 @@ query findDogs ($breed: String!) {
     myDogs {
       name
       breed
+      about
       age
       fixed
       image

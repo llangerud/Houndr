@@ -13,12 +13,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    searchDog: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id });
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
+
     //search all the users and get the ones who match breed//front end query FIND_DOGS
     //
     users: async (parent, { dogBreed }) => {

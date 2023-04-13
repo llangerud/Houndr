@@ -26,6 +26,8 @@ const ViewMyProfile = () => {
         });
         
   console.log(data);
+  alert('Your account has been updated');
+  window.location.reload()
 } catch (err) {
     console.error(err);
 
@@ -43,7 +45,8 @@ const ViewMyProfile = () => {
             variables: { index },
           });
 
-          console.log(data);
+          alert('Condolences');
+          window.location.reload()
         } catch (err) {
             console.error(err);
         }
@@ -56,25 +59,38 @@ const ViewMyProfile = () => {
 
     
     return (
-        <div>
-            <h1>My Profile</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 m-8">
+            
             <div>
                 
                 <form>
+                <h2 className="card-title text-accent">Edit profile</h2>
                 <div className="form-control w-full max-w-xs">
+                
+                <label className="label">
+                <span className="label-text">username</span>
+                </label>
+                <input type="text" defaultValue={userData.username} className="input input-bordered w-full max-w-xs" ref={usernameRef}/>
+                
+                <label className="label">
+                <span className="label-text">email</span>
+                </label>
+                <input type="text" defaultValue={userData.email} className="input input-bordered w-full max-w-xs" ref={emailRef}  />
 
-  <input type="text" defaultValue={userData.username} className="input input-bordered w-full max-w-xs" ref={usernameRef}/>
-  <input type="text" defaultValue={userData.email} className="input input-bordered w-full max-w-xs" ref={emailRef}  />
-  <input type="text" defaultValue={userData.zip} className="input input-bordered w-full max-w-xs" ref={zipRef}  />
+                <label className="label">
+                <span className="label-text">zip code</span>
+                </label>
+                <input type="text" defaultValue={userData.zip} className="input input-bordered w-full max-w-xs" ref={zipRef}  />
   
-</div>
-<button type="button" onClick={handleSubmit}> Submit Changes</button>
+                </div>
+                <button className="btn btn-accent mt-4" onClick={handleSubmit}> Submit Changes</button>
                 </form>
             </div>
-            <h2>My Dogs</h2>
-            {userData.myDogs.map((dog, index) => {
+            <div>
+            <h2 className="card-title text-primary">My Dogs</h2>
+                {userData.myDogs.map((dog, index) => {
                 return (
-                    <div className="card w-96 bg-base-100 shadow-xl" key={index}>
+                    <div className="card w-96 bg-base-200 shadow-xl mt-4" key={index}>
                         <figure><img src={dog.image} alt="Dogs" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{dog.name}</h2>
@@ -86,10 +102,11 @@ const ViewMyProfile = () => {
                                 <button onClick={() => handleDogDelete(index)}>remove</button>
                             </ol>
                         </div>
-            </div>
+                    </div>
+                    
                 );
             })}
-            
+           </div> 
         </div>
         );
 }

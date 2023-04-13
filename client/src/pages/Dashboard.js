@@ -19,10 +19,6 @@ const [dogFormData, setDogFormData] = useState({
 
   const [showContent, setShowContent] = useState(false);
 
-  // const [id, setId] = useState([])
-// const selectedBreed = dogFormData.breed
-
-
 const {loading, data, refetch} = useQuery(FIND_DOGS, {
 variables: {breed: selected }
 });
@@ -41,22 +37,16 @@ useEffect(() => {
 const handleDogSelect = (e) => {
    
     const {id, value} = e.target;
-    // console.log(e.target.id)
-    // console.log(e.target.value)
+  
     setDogFormData({
         ...dogFormData,
         [id]: value
     });
-    console.log(dogFormData.breed)
- 
-
+   
 }
 
-
-
-
 const showSearchResults = async (e) => {
-//this will show the results with the updated user selections
+//show the results with the updated user selections
     e.preventDefault();
      console.log(dogFormData.breed)
     if (showContent) {
@@ -64,7 +54,7 @@ const showSearchResults = async (e) => {
       setShowContent(false)
     }
    
-    // console.log(dogFormData)
+    //run the query again, show the content
     await refetch()
     setShowContent(true);
     setDogFormData({
@@ -82,6 +72,7 @@ if (loading) {
 
 
 const users =  data.users
+console.log(users)
 
     return (
 
@@ -123,26 +114,24 @@ const users =  data.users
         <div>  
           
           {users.map((user, index)  => (
-             
+          
         <div className="card lg:card-side bg-base-200 shadow-xl m-8" key={index}>
-        <figure><img src={user.myDogs[index].image ? user.myDogs[index].image : './images/happy-pup-1.png'} alt="dog"/></figure>
+        
+        <figure>
+        
+          <img src={user.myDogs[0].image ? user.myDogs[0].image : './images/happy-pup-1.png'} alt="dog"/> </figure>
         <div className="card-body">
-        <h2 className="card-title">{user.myDogs[index].name}</h2>
-        <p>{user.username}</p>
-        <p>{user.username}</p>
+        
+        <h2 className="card-title">{user.myDogs[0].name}</h2>
+        <p>{user.myDogs[0].about}</p>
         <p>{user.zip}</p>
         
         <div className="card-actions justify-end">
-      
-        {/* <button onClick= {handleClicked} value= {user._id}className="btn btn-primary">Listen</button>
-        id={id} */}
-        
+              
         <SearchDogsModal 
         key={users[index]}
         name={users[index]}
-        
-        // image={user.myDogs.image}about={user.myDogs.about}age={user.myDogs.age}fixed={user.myDogs.fixed}zip={user.zip}email={user.email}username={user.username} 
-        
+               
         ></SearchDogsModal>
         </div>
         </div>
