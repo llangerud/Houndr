@@ -39,9 +39,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-    <Navbar></Navbar>
+      
+    
     <Router>
-       
+       <Navbar></Navbar>
 
         <Routes>
               <Route 
