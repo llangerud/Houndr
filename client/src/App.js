@@ -7,7 +7,7 @@ import SignupForm from './components/SignupForm'
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import UserProfile from './pages/UserProfile';
-// import ViewMyProfile from './pages/MyProfile';
+import ViewMyProfile from './pages/MyProfile';
 import Navbar from './components/Navbar';
 import QueryTest from './components/Test'
 
@@ -54,7 +54,7 @@ function App() {
               />
 
        
-          {/* <Route  path='/myprofile' element={<ViewMyProfile/>} /> */}
+          <Route  path='/myprofile' element={<ViewMyProfile/>} />
           <Route  path='/userprofile' element={<UserProfile/>} />
           <Route  path='/dashboard' element={<Dashboard/>} />
           <Route path='/test' element={<QueryTest/>} /> 

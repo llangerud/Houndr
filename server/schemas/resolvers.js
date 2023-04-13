@@ -62,12 +62,12 @@ const resolvers = {
 
     updateProfile: async (parent, { username, email, zip }, context) => {
       if (context.user) {
-        const updateProfile = await User.findOneAndUpdate(
+        const updatedProfile = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { username: username, email: email, zip: zip },
-          { new: true, runValidators: true }
+          { username, email, zip },
+          { new: true }
         );
-        return updateProfile;
+        return updatedProfile;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
