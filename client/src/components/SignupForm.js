@@ -52,11 +52,12 @@ const SignupForm = () => {
   return (
     <>
        <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-            <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-secondary lg:max-w-xl">
+            <div className= "w-full p-6 m-auto bg-base-200 rounded-md ">
                 <h1 className="text-3xl font-semibold text-center text-primary">
                     Create an account
                 </h1>
       <form className="form mt-6" onSubmit={handleFormSubmit}>
+          
           <div className="mb-2">
           <label>Username
           <input
@@ -66,7 +67,7 @@ const SignupForm = () => {
             onChange={handleInputChange}
             value={userFormData.username}
             required
-            className="block w-full px-4 py-2 mt-2 text-indigo-700 bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none"
+            className="input input-bordered w-full max-w-xs"
           />
           </label>
          </div>
@@ -79,7 +80,7 @@ const SignupForm = () => {
             onChange={handleInputChange}
             value={userFormData.email}
             required
-            className="block w-full px-4 py-2 mt-2 text-indigo-700  bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none"
+            className="input input-bordered w-full max-w-xs"
           />
         </label>
         </div>
@@ -92,7 +93,7 @@ const SignupForm = () => {
             onChange={handleInputChange}
             value={userFormData.password}
             required
-            className="block w-full px-4 py-2 mt-2 text-indigo-700  bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none"
+            className="input input-bordered w-full max-w-xs"
           />
          </label>
          </div>
@@ -106,13 +107,13 @@ const SignupForm = () => {
             onChange={handleInputChange}
             value={userFormData.zip}
             required
-            className="block w-full px-4 py-2 mt-2 text-indigo-700  bg-white border rounded-md focus:border-indigo-400 focus:ring-indigo-300 focus:outline-none"
+            className="input input-bordered w-full max-w-xs mb-4"
           />
          </label>
          </div>
        
         <button
-          className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-indigo-700 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
+          className="btn bg-info w-full"
           disabled={!(userFormData.username && userFormData.email && userFormData.password && userFormData.zip)}
           type='submit'
           >

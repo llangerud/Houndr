@@ -17,6 +17,7 @@ const [dogFormData, setDogFormData] = useState({
 
   const [selected, setSelected] = useState('')
 
+ 
   const [showContent, setShowContent] = useState(false);
 
 const {loading, data, refetch} = useQuery(FIND_DOGS, {
@@ -74,6 +75,8 @@ if (loading) {
 const users =  data.users
 
 
+
+
     return (
 
 //two columns, second column drops below first on mobile, second column will display search results
@@ -110,6 +113,18 @@ const users =  data.users
 </form>
 
 {showContent &&  (
+
+<div>
+{users.length === 0 ? (
+  <div className="card w-96 bg-base-200 shadow-xl mt-6 mb-2">
+  <div className="card-body">
+    <h2 className="card-title">PUPPIES PENDING</h2>
+    <p>Nobody's here yet, but I'm sure there are lots of other dogs to play with!</p>
+  </div>
+  <figure><img src="./images/happy-pup-1.png" alt="dog" /></figure>
+</div>
+) : (
+
   
         <div>  
           
@@ -136,13 +151,17 @@ const users =  data.users
         </div>
         </div>
 </div >
+//end of map function
 ))}
+
 </div>
 
-
+//end of conditional no dogs
 )}
   </div>
-
+//end of conditional show content  
+)}
+</div>
       );
     }
 
