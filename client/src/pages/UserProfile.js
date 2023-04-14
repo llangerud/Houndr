@@ -1,12 +1,8 @@
 import React from "react";
 
   const UserProfile = (props) => {
-    console.log(props);
-    console.log(props.name)
     const {name} = props;
-    console.log(name)
-    console.log(name.myDogs[0].image)
-
+  
     return (
       
       <div className="card lg:card-side bg-base-100 shadow-xl">

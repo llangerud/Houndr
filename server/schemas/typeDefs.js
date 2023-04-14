@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
@@ -31,7 +31,6 @@ const typeDefs = gql`
     users(dogBreed: String): [User]
   }
 
-
   input DogInput {
     name: String!
     breed: String!
@@ -41,23 +40,29 @@ const typeDefs = gql`
     fixed: String!
   }
 
-
-  
-
-   
-
   type Mutation {
-    addUser(username: String!, email: String!, password: String!, zip: String!): Auth
-    
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      zip: String!
+    ): Auth
+
     login(email: String!, password: String!): Auth
-    
+
     updateProfile(username: String!, email: String!, zip: String!): User
 
-    addDog(name: String!, breed:String!, about:String!, image:String, age:String!, fixed: String!): User
+    addDog(
+      name: String!
+      breed: String!
+      about: String!
+      image: String
+      age: String!
+      fixed: String!
+    ): User
 
     deleteDog(index: Int!): User
-       
-    }
+  }
 `;
 
 module.exports = typeDefs;

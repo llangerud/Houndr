@@ -25,7 +25,7 @@ const ViewMyProfile = () => {
         },
       });
 
-      console.log(data);
+      
       alert("Your account has been updated");
       window.location.reload();
     } catch (err) {
@@ -35,7 +35,7 @@ const ViewMyProfile = () => {
 
   const handleDogDelete = async (index) => {
     let indexNumber = parseInt(index);
-    console.log(typeof indexNumber);
+    
 
     try {
       const { data } = await deleteDog({

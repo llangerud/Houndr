@@ -85,7 +85,7 @@ const AddDogForm = () => { // set initial form state
             });
 
         }
-        console.log(data)
+        
 
     }
 

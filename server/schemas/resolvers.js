@@ -15,7 +15,6 @@ const resolvers = {
     },
 
     //search all the users and get the ones who match breed//front end query FIND_DOGS
-    //
     users: async (parent, { dogBreed }) => {
       console.log("find Dogs");
       console.log(dogBreed);
