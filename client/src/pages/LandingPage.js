@@ -3,15 +3,11 @@
 import SignupModal from '../components/SignupModal';
 import AddDogModal from '../components/AddDogModal'
 import Auth from '../utils/auth';
-
+import {Link} from 'react-router-dom'
 
 
 export default function LandingPage() {
   
-  const handleClick = () => {
-    window.location.href = '/dashboard';
-  }
-
     return (
       <div>
       {Auth.loggedIn() ? (
@@ -24,7 +20,7 @@ export default function LandingPage() {
             <h1 className="text-5xl font-bold">Let's get some dates!</h1>
             <p className="py-6"></p>
             <AddDogModal></AddDogModal>
-            <button className="btn btn-primary mt-4" onClick={handleClick}>Find Friends</button>
+            <Link to="/dashboard"><button className="btn btn-primary mt-4" >Find Friends</button></Link>
           </div>
         </div>
       </div>
