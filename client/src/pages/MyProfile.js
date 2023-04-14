@@ -2,16 +2,15 @@ import React, { useRef } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
 import { DELETE_DOG, UPDATE_PROFILE } from "../utils/mutations";
-import { useNavigate } from 'react-router'
+
 
 
 
 const ViewMyProfile = () => {
-  const { loading, data } = useQuery(GET_ME);
+  const { loading, data, refetch } = useQuery(GET_ME);
   const [deleteDog] = useMutation(DELETE_DOG);
   const userData = data?.me || {};
   const [updateProfile] = useMutation(UPDATE_PROFILE);
-  const navigate = useNavigate()
   const usernameRef = useRef();
   const emailRef = useRef();
   const zipRef = useRef();
@@ -30,7 +29,7 @@ const ViewMyProfile = () => {
 
       console.log(data);
       alert("Your account has been updated");
-      navigate(0);
+      refetch()
     } catch (err) {
       console.error(err);
     }
@@ -46,7 +45,7 @@ const ViewMyProfile = () => {
       });
 
       alert("Condolences");
-      navigate(0);
+      refetch()
     } catch (err) {
       console.error(err);
     }
