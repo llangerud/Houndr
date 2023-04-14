@@ -48,7 +48,7 @@ const handleDogSelect = (e) => {
 const showSearchResults = async (e) => {
 //show the results with the updated user selections
     e.preventDefault();
-     console.log(dogFormData.breed)
+     
     if (showContent) {
       setSelected(dogFormData.breed)
       setShowContent(false)
@@ -72,7 +72,7 @@ if (loading) {
 
 
 const users =  data.users
-console.log(users)
+
 
     return (
 
