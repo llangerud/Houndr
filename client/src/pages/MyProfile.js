@@ -3,12 +3,14 @@ import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
 import { DELETE_DOG, UPDATE_PROFILE } from "../utils/mutations";
 
+
+
+
 const ViewMyProfile = () => {
-  const { loading, data } = useQuery(GET_ME);
+  const { loading, data, refetch } = useQuery(GET_ME);
   const [deleteDog] = useMutation(DELETE_DOG);
   const userData = data?.me || {};
   const [updateProfile] = useMutation(UPDATE_PROFILE);
-
   const usernameRef = useRef();
   const emailRef = useRef();
   const zipRef = useRef();
@@ -27,7 +29,7 @@ const ViewMyProfile = () => {
 
       
       alert("Your account has been updated");
-      window.location.reload();
+      refetch()
     } catch (err) {
       console.error(err);
     }
@@ -43,7 +45,7 @@ const ViewMyProfile = () => {
       });
 
       alert("Condolences");
-      window.location.reload();
+      refetch()
     } catch (err) {
       console.error(err);
     }

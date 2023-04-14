@@ -8,12 +8,7 @@ import Auth from '../utils/auth';
 const SignupForm = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', zip: '' });
-  // set state for form validation
-  // const [validated] = useState(false);
-  // // set state for alert
-  // const [showAlert, setShowAlert] = useState(false);
 
-  // const navigate = useNavigate();
   const [addUser] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
@@ -33,13 +28,13 @@ const SignupForm = () => {
       if (error) {
         throw new Error(error.message);
       }
-      console.log(data)
+     
       const {token} = data.addUser;
       Auth.login(token);
       
     } catch (err) {
       console.error(err);
-      // setShowAlert(true);
+      
     }
 
     setUserFormData({
@@ -48,9 +43,6 @@ const SignupForm = () => {
       password: '',
       zip: ''
     });
-
-    //takes you to your dashboard
-    // navigate("/dashboard");
 
 
 
@@ -65,8 +57,7 @@ const SignupForm = () => {
                     Create an account
                 </h1>
       <form className="form mt-6" onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
-        <div className="mb-2">
+          <div className="mb-2">
           <label>Username
           <input
             type='text'
