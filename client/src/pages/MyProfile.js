@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
 import { DELETE_DOG, UPDATE_PROFILE } from "../utils/mutations";
-
-
+import Auth from '../utils/auth';
+import SignupModal from '../components/SignupModal';
 
 
 const ViewMyProfile = () => {
@@ -56,7 +56,11 @@ const ViewMyProfile = () => {
   }
 
   return (
+
+    <div>
+    {Auth.loggedIn() ? (
     <div className="grid grid-cols-1 sm:grid-cols-2 m-8">
+      
       <div>
         <form>
           <h2 className="card-title text-accent">Edit profile</h2>
@@ -119,6 +123,14 @@ const ViewMyProfile = () => {
           );
         })}
       </div>
+
+
+    </div>
+     ) : (
+      <div className="grid grid-cols-1 sm:grid-cols-2 m-8">Looks like you haven't set up your account yet
+        <SignupModal></SignupModal>
+      </div>
+      )} 
     </div>
   );
 };
