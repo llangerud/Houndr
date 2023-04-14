@@ -93,8 +93,8 @@ const AddDogForm = () => { // set initial form state
     return (
 
 
-        <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-            <div className="w-full p-6 m-auto bg-base-200 rounded-md ">
+        <div className="relative flex flex-col justify-center min-h-screen mt-2 mb-2">
+            <div className="w-full p-6 m-auto bg-base-200 rounded-md">
                 <h1 className="text-3xl font-semibold text-center text-primary">
                     Your dog's info
                 </h1>
@@ -176,14 +176,14 @@ const AddDogForm = () => { // set initial form state
                                 dogFormData.fixed
                             }
                             required
-                            className="select select-bordered w-full max-w-xs">
+                            className="select select-bordered w-full max-w-xs mb-4">
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                         </select>
                     </div>
 
 
-                    <button className="w-full px-4 py-2 mt-4 tracking-wide text-black transition-colors duration-200 transform bg-warning rounded-md hover:bg-base-100 focus:outline-none focus:bg-base-100"
+                    <button className="btn bg-info w-full"
                         disabled={
                             !(dogFormData.name && dogFormData.about && dogFormData.age && dogFormData.fixed)
                         }
