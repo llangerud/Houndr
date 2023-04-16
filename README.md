@@ -24,9 +24,10 @@ This is a single-page application utilizing the MERN stack (MongoDB/Mongoose ODM
 ## Usage
 With the Houndr application, users can create an account to login, by clicking the "Get Started" button. If the user already has an account, click the "Log In" button on the top right hand side of the page. 
 
-![get_started](https://user-images.githubusercontent.com/114967552/231615812-cff446e9-1701-4820-b7f8-671a9fe20a78.JPG)
+![mainpage](https://user-images.githubusercontent.com/112982735/232259440-9e9af03e-6ddb-4314-b1fd-f301103f4f91.jpg)
 
-![create_account](https://user-images.githubusercontent.com/114967552/231615819-3d49377b-6e37-48a6-aca2-77c083ff3eee.JPG)
+
+![login](https://user-images.githubusercontent.com/112982735/232259443-3fae5e97-f948-4cf8-947a-d77da954471b.jpg)
 
 Once logged in, the user will have a choice to add a dog, or find a friend.
 
@@ -34,11 +35,9 @@ Once logged in, the user will have a choice to add a dog, or find a friend.
 
 To add their dog/s information to their profile, they can do this by clicking on the "Add Your Dog" button. By adding this information, other app users will be able to search your dog/s. 
 
-![add_dog](https://user-images.githubusercontent.com/114967552/231615816-67e7d327-6311-4743-be6f-dd52facb0a72.JPG)
+![doginfo](https://user-images.githubusercontent.com/112982735/232259442-f738f94f-bc61-4287-8d78-5ac005faf708.jpg)
 
-To find a friend, the user can search for other dogs in their area by clicking on the "Find Friends" button. Here, the user can search for a type of breed and an age range.
-
-![searching](https://user-images.githubusercontent.com/114967552/231615814-78f26a97-1601-4444-aaa9-ea890ccc4452.JPG)
+To find a friend, the user can search for other dogs in their area by clicking on the "Find Friends" button. Here, the user can search for a type of breed and an age range. If there is a dog within the search criteria, it will appear with partial information. 
 
 If there is a dog within the search criteria, it will appear with partial information. 
 
